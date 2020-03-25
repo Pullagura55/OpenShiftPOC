@@ -1,0 +1,35 @@
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+
+docker --version
+
+
+vi dockerfile
+
+FROM openjdk:8-jdk-alpine
+ARG JAR_FILE=*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
+
+docker image build -t testapp .
+
+docker image ls
+
+docker container run --name testapp -d -p 8080:8080 testapp
+
+docker container ls
+docker container ls -a
+
+docker tag testapp creatormaruthi/testapp1
+
+docker push testapp/testapp
+
+
+docker stop containerName ---To stop the container
+
+docker system prune--To remove 
+
+
+
+
+http://18.223.23.7:8080/perficient/
